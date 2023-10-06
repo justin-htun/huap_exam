@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:huap_exam/pages/home_page.dart';
+import 'package:huap_exam/ui/pages/home_page.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
             color: Colors.white,
           ),
           iconTheme: IconThemeData(color: Colors.white, size: 23),
-          backgroundColor: Colors.blueAccent,
+          backgroundColor: Colors.blueGrey,
           elevation: 0,
           systemOverlayStyle:
           SystemUiOverlayStyle(statusBarColor: Colors.transparent),
