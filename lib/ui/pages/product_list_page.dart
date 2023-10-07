@@ -26,7 +26,6 @@ class _ProductListPageState extends State<ProductListPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: kSpaceGreyLightColor,
       appBar: AppBar(title: Text(widget.categoryName.toUpperCase()), centerTitle: true,),
       body: _buildBody(),
     );
