@@ -11,7 +11,7 @@ Widget buildCategoryList(BuildContext context, List<String> categoryList) {
       CategoryBloc().add(GetCategoryList());
     },
     child: Container(
-      padding: const EdgeInsets.only(left: 20, right: 20, top: 40, bottom: 20),
+      padding: const EdgeInsets.only(left: 20, right: 20, top: 40, bottom: 10),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -43,8 +43,9 @@ Widget buildCategoryList(BuildContext context, List<String> categoryList) {
                         },
                         child: Container(
                           decoration: BoxDecoration(
+                              color: Colors.white,
                               border: Border.all(
-                                color: Colors.black54,
+                                color: Colors.black12,
                               ),
                               borderRadius: BorderRadius.circular(10)),
                           padding: const EdgeInsets.all(20),
