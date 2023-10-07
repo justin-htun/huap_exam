@@ -10,7 +10,7 @@ Widget buildProductList(BuildContext context, ProductListModel productListModel,
       ProductListBloc().add(GetProductListByCategoryEvent(categoryName));
     },
     child: Container(
-      padding: const EdgeInsets.only(left: 15, right: 15, top: 40, bottom: 20),
+      padding: const EdgeInsets.only(left: 20, right: 20, top: 40, bottom: 10),
       child: productListModel.products == null || productListModel.products!.isEmpty
           ? buildEmptyWidget()
           : ListView.separated(
@@ -22,6 +22,7 @@ Widget buildProductList(BuildContext context, ProductListModel productListModel,
           Products product = productListModel.products![index];
           return InkWell(
             onTap: () {
+              // go to product detail
             },
             child: Card(
               surfaceTintColor: Colors.white,

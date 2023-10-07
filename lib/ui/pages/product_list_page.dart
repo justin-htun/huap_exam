@@ -32,38 +32,35 @@ class _ProductListPageState extends State<ProductListPage> {
   }
 
   Widget _buildBody() {
-    return Container(
-      margin: const EdgeInsets.all(8.0),
-      child: BlocProvider(
-        create: (_) => _productListBloc,
-        child: BlocListener<ProductListBloc, ProductListState>(
-          listener: (context, state) {
-            if (state is ProductListError) {
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(
-                  content: Text(state.message!),
-                ),
-              );
+    return BlocProvider(
+      create: (_) => _productListBloc,
+      child: BlocListener<ProductListBloc, ProductListState>(
+        listener: (context, state) {
+          if (state is ProductListError) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text(state.message!),
+              ),
+            );
+          }
+        },
+        child: BlocBuilder<ProductListBloc, ProductListState>(
+          builder: (context, state) {
+            if (state is ProductListInitial) {
+              return buildLoading();
+            } else if (state is ProductListLoading) {
+              return buildLoading();
+            } else if (state is ProductListLoaded) {
+              return buildProductList(context, state.productListModel, widget.categoryName);
+            } else if (state is ProductListError) {
+              return buildErrorWidget(retryAction: () {
+                _productListBloc
+                    .add(GetProductListByCategoryEvent(widget.categoryName));
+              });
+            } else {
+              return Container();
             }
           },
-          child: BlocBuilder<ProductListBloc, ProductListState>(
-            builder: (context, state) {
-              if (state is ProductListInitial) {
-                return buildLoading();
-              } else if (state is ProductListLoading) {
-                return buildLoading();
-              } else if (state is ProductListLoaded) {
-                return buildProductList(context, state.productListModel, widget.categoryName);
-              } else if (state is ProductListError) {
-                return buildErrorWidget(retryAction: () {
-                  _productListBloc
-                      .add(GetProductListByCategoryEvent(widget.categoryName));
-                });
-              } else {
-                return Container();
-              }
-            },
-          ),
         ),
       ),
     );
