@@ -1,0 +1,8 @@
+{
+  "language" : "Language",
+  "home" : "Home",
+  "categories" : "Categories",
+  "empty" : "Empty",
+  "no_internet_or_something_wrong" : "No internet connection or something went wrong",
+  "failed_to_fetch_data" : "Failed to fetch data. Is your device online?"
+}

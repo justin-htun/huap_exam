@@ -34,7 +34,7 @@ class ImageWidget extends StatelessWidget {
           );
         },
         errorWidget: (context, url, error) => Image.asset(
-          "assets/images/huap_logo.png",
+          "assets/images/huap_logo.webp",
           fit: BoxFit.contain,
         ),
         fit: fit,

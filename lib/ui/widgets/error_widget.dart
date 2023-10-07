@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:huap_exam/configs/app_config.dart';
 
@@ -16,7 +17,7 @@ Widget buildErrorWidget() {
             height: 10,
           ),
           Text(
-            'No internet connection or something went wrong',
+            'no_internet_or_something_wrong'.tr(),
             style: TextStyle(fontSize: smallFontSize, color: Colors.black),
           ),
         ],

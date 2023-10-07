@@ -1,7 +1,9 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:huap_exam/blocs/category_bloc/category_bloc.dart';
 import 'package:huap_exam/ui/widgets/category_list_widget.dart';
+import 'package:huap_exam/ui/widgets/drawer_widget.dart';
 import 'package:huap_exam/ui/widgets/error_widget.dart';
 import 'package:huap_exam/ui/widgets/loading_widget.dart';
 
@@ -25,7 +27,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Home'),
+        title: Text('home'.tr()),
         centerTitle: true,
       ),
       body: BlocProvider(
@@ -57,6 +59,7 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
       ),
+      drawer: buildDrawer(context),
     );
   }
 }

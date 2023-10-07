@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:huap_exam/configs/app_config.dart';
 import 'package:huap_exam/ui/pages/product_list_page.dart';
@@ -9,7 +10,7 @@ Widget buildCategoryList(BuildContext context, List<String> categoryList) {
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text("Categories", style: TextStyle(fontSize: xLargeFontSize),),
+        Text("categories".tr(), style: TextStyle(fontSize: xLargeFontSize),),
         const Divider(),
         const SizedBox(height: 10,),
         Expanded (

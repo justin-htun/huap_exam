@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:equatable/equatable.dart';
 import 'package:huap_exam/resources/api_repository.dart';
 import 'package:meta/meta.dart';
@@ -15,7 +16,7 @@ class CategoryBloc extends Bloc<CategoryEvent, CategoryState> {
           final categoryList = await apiRepository.fetchCategoryList();
           emit(CategoryLoaded(categoryList));
         } catch (e){
-          emit(const CategoryError("Failed to fetch data. is your device online?"));
+          emit(CategoryError("failed_to_fetch_data".tr()));
         }
     });
   }
