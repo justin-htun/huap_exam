@@ -15,12 +15,9 @@ class _SplashPageState extends State<SplashPage> {
     super.initState();
     AppDatabase().initialize();
     Future.delayed(const Duration(seconds: 3), () {
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) {
-          return const HomePage();
-        }),
-      );
+      Navigator.of(context).pushAndRemoveUntil(
+          MaterialPageRoute(builder: (context) => const HomePage()),
+          (Route<dynamic> route) => false);
     });
   }
 

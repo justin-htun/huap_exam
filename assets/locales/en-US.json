@@ -5,5 +5,10 @@
   "empty" : "Empty",
   "no_internet_or_something_wrong" : "No internet connection or something went wrong",
   "failed_to_fetch_data" : "Failed to fetch data. Is your device online?",
-  "retry" : "Retry"
+  "retry" : "Retry",
+  "quit" : "Quit",
+  "tap_to_close" : "Tap ok to close the app.",
+  "cancel" : "Cancel",
+  "ok" : "OK"
+
 }

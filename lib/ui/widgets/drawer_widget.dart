@@ -40,7 +40,7 @@ Drawer buildDrawer(BuildContext context) {
                         width: 30,
                         height: 30,
                       ),
-                      const Text("ประเทศไทย")
+                      const Text("ไทย")
                     ],
                   ),
                   controlAffinity: ListTileControlAffinity.trailing,
