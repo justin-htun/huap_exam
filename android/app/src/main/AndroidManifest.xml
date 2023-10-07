@@ -2,7 +2,7 @@
 
     <uses-permission android:name="android.permission.INTERNET"/>
     <application
-        android:label="huap_exam"
+        android:label="HUAP Exam"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
