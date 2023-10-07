@@ -2,10 +2,11 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:huap_exam/blocs/category_bloc/category_bloc.dart';
 import 'package:huap_exam/configs/app_config.dart';
+import 'package:huap_exam/models/category.dart';
 import 'package:huap_exam/ui/pages/product_list_page.dart';
 import 'package:huap_exam/ui/widgets/empty_widget.dart';
 
-Widget buildCategoryList(BuildContext context, List<String> categoryList) {
+Widget buildCategoryList(BuildContext context, List<Category> categoryList) {
   return RefreshIndicator(
     onRefresh: () async {
       CategoryBloc().add(GetCategoryList());
@@ -37,7 +38,7 @@ Widget buildCategoryList(BuildContext context, List<String> categoryList) {
                           Navigator.push(
                             context,
                             MaterialPageRoute(builder: (context) {
-                              return ProductListPage(categoryList![index]);
+                              return ProductListPage(categoryList![index].name);
                             }),
                           );
                         },
@@ -49,7 +50,7 @@ Widget buildCategoryList(BuildContext context, List<String> categoryList) {
                               ),
                               borderRadius: BorderRadius.circular(10)),
                           padding: const EdgeInsets.all(20),
-                          child: Text(categoryList[index].toUpperCase()),
+                          child: Text(categoryList[index].name.toUpperCase()),
                         ),
                       );
                     },

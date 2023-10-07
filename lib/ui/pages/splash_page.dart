@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:huap_exam/blocs/category_bloc/category_bloc.dart';
+import 'package:huap_exam/resources/db_provider.dart';
 import 'home_page.dart';
 
 class SplashPage extends StatefulWidget {
@@ -10,12 +10,10 @@ class SplashPage extends StatefulWidget {
 }
 
 class _SplashPageState extends State<SplashPage> {
-  final CategoryBloc _categoryBloc = CategoryBloc();
-
   @override
   void initState() {
     super.initState();
-    //await AppDatabase().initialize();
+    AppDatabase().initialize();
     Future.delayed(const Duration(seconds: 3), () {
       Navigator.push(
         context,

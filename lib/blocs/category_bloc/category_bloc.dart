@@ -1,7 +1,9 @@
 import 'package:bloc/bloc.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:equatable/equatable.dart';
+import 'package:huap_exam/models/category.dart';
 import 'package:huap_exam/resources/api_repository.dart';
+import 'package:huap_exam/resources/db_provider.dart';
 import 'package:meta/meta.dart';
 part 'category_event.dart';
 part 'category_state.dart';
@@ -13,10 +15,22 @@ class CategoryBloc extends Bloc<CategoryEvent, CategoryState> {
     on<GetCategoryList>((event, emit) async {
         try {
           emit(CategoryLoading());
-          final categoryList = await apiRepository.fetchCategoryList();
-          emit(CategoryLoaded(categoryList));
+          var categoryList = await apiRepository.fetchCategoryList();
+          List<Category> tempDBCategoryList = [];
+          for (int i = 0; i < categoryList.length; i++) {
+            final category = Category()
+              ..id = i+1
+              ..name = categoryList[i];
+            tempDBCategoryList.add(category);
+          }
+          emit(CategoryLoaded(await AppDatabase().updateAll(tempDBCategoryList)));
         } catch (e){
-          emit(CategoryError("failed_to_fetch_data".tr()));
+          var categoryList =  AppDatabase().getAllCategories();
+          if(categoryList.isNotEmpty){
+            emit(CategoryLoaded(categoryList));
+          } else {
+            emit(CategoryError("failed_to_fetch_data".tr()));
+          }
         }
     });
   }

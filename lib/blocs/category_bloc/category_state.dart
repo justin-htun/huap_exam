@@ -13,7 +13,7 @@ class CategoryInitial extends CategoryState {}
 class CategoryLoading extends CategoryState {}
 
 class CategoryLoaded extends CategoryState {
-  final List<String> categoryList;
+  final List<Category> categoryList;
   const CategoryLoaded(this.categoryList);
 }
 
