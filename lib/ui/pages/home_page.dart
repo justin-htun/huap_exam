@@ -30,36 +30,40 @@ class _HomePageState extends State<HomePage> {
         title: Text('home'.tr()),
         centerTitle: true,
       ),
-      body: BlocProvider(
-        create: (_) => _categoryBloc,
-        child: BlocListener<CategoryBloc, CategoryState>(
-          listener: (context, state) {
-            if (state is CategoryError) {
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(
-                  content: Text(state.message!),
-                ),
-              );
+      body: buildBody(),
+      drawer: buildDrawer(context),
+    );
+  }
+
+  Widget buildBody() {
+    return BlocProvider(
+      create: (_) => _categoryBloc,
+      child: BlocListener<CategoryBloc, CategoryState>(
+        listener: (context, state) {
+          if (state is CategoryError) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text(state.message!),
+              ),
+            );
+          }
+        },
+        child: BlocBuilder<CategoryBloc, CategoryState>(
+          builder: (context, state) {
+            if (state is CategoryInitial) {
+              return buildLoading();
+            } else if (state is CategoryLoading) {
+              return buildLoading();
+            } else if (state is CategoryLoaded) {
+              return buildCategoryList(context, state.categoryList);
+            } else if (state is CategoryError) {
+              return buildErrorWidget(retryAction: () {_categoryBloc.add(GetCategoryList());});
+            } else {
+              return Container();
             }
           },
-          child: BlocBuilder<CategoryBloc, CategoryState>(
-            builder: (context, state) {
-              if (state is CategoryInitial) {
-                return buildLoading();
-              } else if (state is CategoryLoading) {
-                return buildLoading();
-              } else if (state is CategoryLoaded) {
-                return buildCategoryList(context, state.categoryList);
-              } else if (state is CategoryError) {
-                return buildErrorWidget();
-              } else {
-                return Container();
-              }
-            },
-          ),
         ),
       ),
-      drawer: buildDrawer(context),
     );
   }
 }

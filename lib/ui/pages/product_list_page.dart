@@ -28,13 +28,13 @@ class _ProductListPageState extends State<ProductListPage> {
     return Scaffold(
       backgroundColor: kSpaceGreyLightColor,
       appBar: AppBar(title: Text(widget.categoryName.toUpperCase()), centerTitle: true,),
-      body: _buildListProduct(),
+      body: _buildBody(),
     );
   }
 
-  Widget _buildListProduct() {
+  Widget _buildBody() {
     return Container(
-      margin: EdgeInsets.all(8.0),
+      margin: const EdgeInsets.all(8.0),
       child: BlocProvider(
         create: (_) => _productListBloc,
         child: BlocListener<ProductListBloc, ProductListState>(
@@ -54,9 +54,12 @@ class _ProductListPageState extends State<ProductListPage> {
               } else if (state is ProductListLoading) {
                 return buildLoading();
               } else if (state is ProductListLoaded) {
-                return buildProductList(context, state.productListModel);
+                return buildProductList(context, state.productListModel, widget.categoryName);
               } else if (state is ProductListError) {
-                return buildErrorWidget();
+                return buildErrorWidget(retryAction: () {
+                  _productListBloc
+                      .add(GetProductListByCategoryEvent(widget.categoryName));
+                });
               } else {
                 return Container();
               }
