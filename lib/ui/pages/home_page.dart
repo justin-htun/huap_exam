@@ -5,7 +5,7 @@ import 'package:huap_exam/blocs/category_bloc/category_bloc.dart';
 import 'package:huap_exam/ui/widgets/category_list_widget.dart';
 import 'package:huap_exam/ui/widgets/drawer_widget.dart';
 import 'package:huap_exam/ui/widgets/error_widget.dart';
-import 'package:huap_exam/ui/widgets/loading_widget.dart';
+import 'package:huap_exam/ui/widgets/home_page_loading_widget.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -51,9 +51,9 @@ class _HomePageState extends State<HomePage> {
         child: BlocBuilder<CategoryBloc, CategoryState>(
           builder: (context, state) {
             if (state is CategoryInitial) {
-              return buildLoading();
+              return buildHomePageLoadingWidget();
             } else if (state is CategoryLoading) {
-              return buildLoading();
+              return buildHomePageLoadingWidget();
             } else if (state is CategoryLoaded) {
               return buildCategoryList(context, state.categoryList);
             } else if (state is CategoryError) {

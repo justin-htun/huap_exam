@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:huap_exam/blocs/product_list_bloc/product_list_bloc.dart';
-import 'package:huap_exam/configs/app_config.dart';
 import 'package:huap_exam/ui/widgets/error_widget.dart';
-import 'package:huap_exam/ui/widgets/loading_widget.dart';
+import 'package:huap_exam/ui/widgets/product_list_page_loading_widget.dart';
 import 'package:huap_exam/ui/widgets/product_list_widget.dart';
 
 class ProductListPage extends StatefulWidget {
@@ -47,9 +46,9 @@ class _ProductListPageState extends State<ProductListPage> {
         child: BlocBuilder<ProductListBloc, ProductListState>(
           builder: (context, state) {
             if (state is ProductListInitial) {
-              return buildLoading();
+              return buildProductListPageLoadingWidget();
             } else if (state is ProductListLoading) {
-              return buildLoading();
+              return buildProductListPageLoadingWidget();
             } else if (state is ProductListLoaded) {
               return buildProductList(context, state.productListModel, widget.categoryName);
             } else if (state is ProductListError) {

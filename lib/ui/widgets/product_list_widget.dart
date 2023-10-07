@@ -10,7 +10,7 @@ Widget buildProductList(BuildContext context, ProductListModel productListModel,
       ProductListBloc().add(GetProductListByCategoryEvent(categoryName));
     },
     child: Container(
-      padding: const EdgeInsets.only(left: 20, right: 20, top: 40, bottom: 10),
+      padding: const EdgeInsets.only(left: 20, right: 20, top: 30, bottom: 10),
       child: productListModel.products == null || productListModel.products!.isEmpty
           ? buildEmptyWidget()
           : ListView.separated(

@@ -11,12 +11,12 @@ dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^1.0.2
-  flutter_screenutil: ^5.9.0
   flutter_bloc: ^8.0.1
   equatable: ^2.0.3
   dio: ^4.0.4
   cached_network_image: ^3.2.3
   easy_localization: ^3.0.3
+  shimmer: ^3.0.0
 
 dev_dependencies:
   flutter_test:
