@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:huap_exam/configs/app_config.dart';
+import 'package:huap_exam/ui/pages/product_list_page.dart';
 import 'package:huap_exam/ui/widgets/empty_widget.dart';
 
 Widget buildCategoryList(BuildContext context, List<String> categoryList) {
@@ -21,7 +22,14 @@ Widget buildCategoryList(BuildContext context, List<String> categoryList) {
                   itemCount: categoryList.length,
                   itemBuilder: (context, index) {
                     return InkWell(
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) {
+                            return ProductListPage(categoryList![index]);
+                          }),
+                        );
+                      },
                       child: Container(
                         decoration: BoxDecoration(
                           border: Border.all(
