@@ -1,7 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:huap_exam/ui/pages/home_page.dart';
+import 'package:huap_exam/ui/pages/splash_page.dart';
 import 'configs/app_config.dart';
 
 class MyApp extends StatelessWidget {
@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
           SystemUiOverlayStyle(statusBarColor: Colors.transparent),
         ),
       ),
-      home: const HomePage(),
+      home: const SplashPage(),
     );
   }
 }
