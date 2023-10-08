@@ -9,6 +9,6 @@
   "quit" : "Quit",
   "tap_to_close" : "Tap ok to close the app.",
   "cancel" : "Cancel",
-  "ok" : "OK"
-
+  "ok" : "OK",
+  "version" : "Version"
 }

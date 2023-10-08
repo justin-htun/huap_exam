@@ -1,5 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:huap_exam/blocs/app_version_cubit.dart';
 import 'package:huap_exam/configs/app_config.dart';
 
 Drawer buildDrawer(BuildContext context) {
@@ -72,6 +74,18 @@ Drawer buildDrawer(BuildContext context) {
                     }
                   }),
             ],
+          ),
+        ),
+        BlocProvider(
+          create: (_) => AppVersionCubit()..getAppVersion(),
+          child: BlocBuilder<AppVersionCubit, String?>(
+            builder: (context, version) {
+              return Padding(
+                padding: const EdgeInsets.all(20),
+                child: Text(
+                    version == null ? '' : ('${'version'.tr()}- $version')),
+              );
+            },
           ),
         ),
       ],
